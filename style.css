@@ -3,19 +3,26 @@ body {
   text-align: center;
   background: linear-gradient(135deg, #0f172a, #1e3a8a);
   color: white;
+  margin: 0;
+  padding: 0;
+  touch-action: manipulation;
 }
 
-.screen {
-  margin-top: 50px;
+.container {
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #1e293b;
+  border-radius: 15px;
 }
 
-.hidden {
-  display: none;
-}
 
 button {
-  margin: 10px;
-  padding: 12px 20px;
+  width: 100%;
+  margin: 8px 0;
+  padding: 15px;
+  font-size: 16px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -24,12 +31,32 @@ button {
   font-weight: bold;
 }
 
-button:hover {
-  background: #0ea5e9;
+button:active {
+  transform: scale(0.95);
+}
+
+h1 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 16px;
 }
 
 .info {
-  margin-top: 20px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
 }

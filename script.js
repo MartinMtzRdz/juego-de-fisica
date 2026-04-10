@@ -91,6 +91,8 @@ const questions = [
   }
 ];
 
+navigator.vibrate(100);
+
 questions.sort(() => Math.random() - 0.5);
 
 let current = 0;
