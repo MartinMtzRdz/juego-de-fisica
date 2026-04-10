@@ -91,8 +91,7 @@ const questions = [
   }
 ];
 
-navigator.vibrate(100);
-
+// 🔥 MEZCLAR preguntas
 questions.sort(() => Math.random() - 0.5);
 
 let current = 0;
@@ -118,13 +117,20 @@ function loadQuestion() {
   q.answers.forEach((ans, i) => {
     const btn = document.createElement("button");
     btn.innerText = ans;
-    btn.onclick = () => checkAnswer(i);
+
+    // ✅ CORRECCIÓN PARA CELULAR
+    btn.addEventListener("click", () => checkAnswer(i));
+
     answersDiv.appendChild(btn);
   });
 }
 
 function checkAnswer(index) {
   const q = questions[current];
+
+  // ✅ BLOQUEAR BOTONES DESPUÉS DE RESPONDER
+  const buttons = document.querySelectorAll("#answers button");
+  buttons.forEach(btn => btn.disabled = true);
 
   if (index === q.correct) {
     score += 10;

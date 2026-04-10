@@ -11,7 +11,7 @@
 <div id="startScreen" class="screen">
   <h1>⚡ Física Challenge</h1>
   <p>Pon a prueba tus conocimientos</p>
-  <button onclick="startGame()">Jugar</button>
+  <button id="startBtn">Jugar</button>
 </div>
 
 <div id="gameScreen" class="screen hidden">
@@ -27,13 +27,13 @@
     <span id="lives">❤️❤️❤️</span>
   </div>
 
-  <button onclick="nextQuestion()">Siguiente</button>
+  <button id="nextBtn">Siguiente</button>
 </div>
 
 <div id="endScreen" class="screen hidden">
   <h1>Juego terminado</h1>
   <p id="finalScore"></p>
-  <button onclick="restartGame()">Reiniciar</button>
+  <button id="restartBtn">Reiniciar</button>
 </div>
 
 <script src="script.js"></script>

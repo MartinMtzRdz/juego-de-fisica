@@ -31,6 +31,14 @@ button {
   font-weight: bold;
 }
 
+button {
+  font-size: 18px;
+  padding: 15px;
+  width: 100%;
+  margin: 5px 0;
+  touch-action: manipulation;
+}
+
 button:active {
   transform: scale(0.95);
 }
