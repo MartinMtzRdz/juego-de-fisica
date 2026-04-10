@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Física Challenge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="startScreen" class="screen">
+  <h1>⚡ Física Challenge</h1>
+  <p>Pon a prueba tus conocimientos</p>
+  <button onclick="startGame()">Jugar</button>
+</div>
+
+<div id="gameScreen" class="screen hidden">
+  <h2 id="level"></h2>
+  <p id="question"></p>
+
+  <div id="answers"></div>
+
+  <p id="feedback"></p>
+
+  <div class="info">
+    <span id="score">Puntaje: 0</span>
+    <span id="lives">❤️❤️❤️</span>
+  </div>
+
+  <button onclick="nextQuestion()">Siguiente</button>
+</div>
+
+<div id="endScreen" class="screen hidden">
+  <h1>Juego terminado</h1>
+  <p id="finalScore"></p>
+  <button onclick="restartGame()">Reiniciar</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
