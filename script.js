@@ -16,6 +16,78 @@ const questions = [
     answers: ["Plástico", "Hierro", "Madera"],
     correct: 1,
     explanation: "Los imanes atraen materiales ferromagnéticos."
+  },
+  {
+    question: "Unidad del calor específico",
+    answers: ["J/kg°C", "Voltios", "Newton"],
+    correct: 0,
+    explanation: "Energía por unidad de masa y temperatura."
+  },
+  {
+    question: "¿Qué es un campo magnético?",
+    answers: ["Región donde actúa un imán", "Una fuerza", "Un objeto"],
+    correct: 0,
+    explanation: "Es el área donde se perciben fuerzas magnéticas."
+  },
+  {
+    question: "¿Qué es un electroimán?",
+    answers: ["Un imán natural", "Un imán con corriente eléctrica", "Un metal"],
+    correct: 1,
+    explanation: "Se genera al pasar corriente por un conductor."
+  },
+  {
+    question: "¿Qué pasa si aumenta la temperatura?",
+    answers: ["Aumenta la energía térmica", "Disminuye la masa", "Nada"],
+    correct: 0,
+    explanation: "La energía térmica aumenta con la temperatura."
+  },
+  {
+    question: "¿Qué unidad tiene la corriente eléctrica?",
+    answers: ["Voltios", "Amperios", "Ohms"],
+    correct: 1,
+    explanation: "Se mide en amperios (A)."
+  },
+  {
+    question: "¿Qué mide el voltaje?",
+    answers: ["Corriente", "Diferencia de potencial", "Resistencia"],
+    correct: 1,
+    explanation: "El voltaje es la diferencia de potencial."
+  },
+  {
+    question: "¿Qué representa la resistencia?",
+    answers: ["Paso de corriente", "Oposición al flujo", "Energía"],
+    correct: 1,
+    explanation: "Es la oposición al paso de corriente."
+  },
+  {
+    question: "¿Qué sucede si aumenta la resistencia?",
+    answers: ["Disminuye la corriente", "Aumenta la corriente", "Nada"],
+    correct: 0,
+    explanation: "Según la ley de Ohm."
+  },
+  {
+    question: "¿Qué tipo de energía es el calor?",
+    answers: ["Mecánica", "Térmica", "Eléctrica"],
+    correct: 1,
+    explanation: "El calor es energía térmica."
+  },
+  {
+    question: "¿Qué produce un campo magnético?",
+    answers: ["Corriente eléctrica", "Luz", "Sonido"],
+    correct: 0,
+    explanation: "La corriente genera campo magnético."
+  },
+  {
+    question: "¿Qué instrumento mide la corriente?",
+    answers: ["Voltímetro", "Amperímetro", "Termómetro"],
+    correct: 1,
+    explanation: "El amperímetro mide la corriente."
+  },
+  {
+    question: "¿Qué instrumento mide la temperatura?",
+    answers: ["Termómetro", "Voltímetro", "Regla"],
+    correct: 0,
+    explanation: "El termómetro mide la temperatura."
   }
 ];
 
