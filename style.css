@@ -17,6 +17,13 @@ body {
   border-radius: 15px;
 }
 
+.hidden {
+  display: none;
+}
+
+.screen {
+  padding: 20px;
+}
 
 button {
   width: 100%;
