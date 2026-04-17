@@ -28,75 +28,20 @@ const questions = [
     answers: ["Región donde actúa un imán", "Una fuerza", "Un objeto"],
     correct: 0,
     explanation: "Es el área donde se perciben fuerzas magnéticas."
-  },
-  {
-    question: "¿Qué es un electroimán?",
-    answers: ["Un imán natural", "Un imán con corriente eléctrica", "Un metal"],
-    correct: 1,
-    explanation: "Se genera al pasar corriente por un conductor."
-  },
-  {
-    question: "¿Qué pasa si aumenta la temperatura?",
-    answers: ["Aumenta la energía térmica", "Disminuye la masa", "Nada"],
-    correct: 0,
-    explanation: "La energía térmica aumenta con la temperatura."
-  },
-  {
-    question: "¿Qué unidad tiene la corriente eléctrica?",
-    answers: ["Voltios", "Amperios", "Ohms"],
-    correct: 1,
-    explanation: "Se mide en amperios (A)."
-  },
-  {
-    question: "¿Qué mide el voltaje?",
-    answers: ["Corriente", "Diferencia de potencial", "Resistencia"],
-    correct: 1,
-    explanation: "El voltaje es la diferencia de potencial."
-  },
-  {
-    question: "¿Qué representa la resistencia?",
-    answers: ["Paso de corriente", "Oposición al flujo", "Energía"],
-    correct: 1,
-    explanation: "Es la oposición al paso de corriente."
-  },
-  {
-    question: "¿Qué sucede si aumenta la resistencia?",
-    answers: ["Disminuye la corriente", "Aumenta la corriente", "Nada"],
-    correct: 0,
-    explanation: "Según la ley de Ohm."
-  },
-  {
-    question: "¿Qué tipo de energía es el calor?",
-    answers: ["Mecánica", "Térmica", "Eléctrica"],
-    correct: 1,
-    explanation: "El calor es energía térmica."
-  },
-  {
-    question: "¿Qué produce un campo magnético?",
-    answers: ["Corriente eléctrica", "Luz", "Sonido"],
-    correct: 0,
-    explanation: "La corriente genera campo magnético."
-  },
-  {
-    question: "¿Qué instrumento mide la corriente?",
-    answers: ["Voltímetro", "Amperímetro", "Termómetro"],
-    correct: 1,
-    explanation: "El amperímetro mide la corriente."
-  },
-  {
-    question: "¿Qué instrumento mide la temperatura?",
-    answers: ["Termómetro", "Voltímetro", "Regla"],
-    correct: 0,
-    explanation: "El termómetro mide la temperatura."
   }
 ];
 
+// 🔀 Mezclar preguntas (ya no se repiten)
 questions.sort(() => Math.random() - 0.5);
 
 let current = 0;
 let score = 0;
 let lives = 3;
 let level = 1;
+
+// ⏱️ TIMER
+let tiempo = 10;
+let intervalo;
 
 const startBtn = document.getElementById("startBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -121,21 +66,33 @@ function loadQuestion() {
   const answersDiv = document.getElementById("answers");
   answersDiv.innerHTML = "";
 
-  q.answers.forEach((ans, i) => {
+  // 🔀 Mezclar respuestas correctamente
+  let opciones = q.answers.map((ans, i) => ({
+    texto: ans,
+    correcta: i === q.correct
+  }));
+
+  opciones.sort(() => Math.random() - 0.5);
+
+  opciones.forEach(op => {
     const btn = document.createElement("button");
-    btn.innerText = ans;
-    btn.addEventListener("click", () => checkAnswer(i));
+    btn.innerText = op.texto;
+    btn.addEventListener("click", () => checkAnswer(op.correcta));
     answersDiv.appendChild(btn);
   });
+
+  iniciarTimer(); // ⏱️ iniciar tiempo
 }
 
-function checkAnswer(index) {
+function checkAnswer(esCorrecta) {
   const q = questions[current];
+
+  clearInterval(intervalo);
 
   const buttons = document.querySelectorAll("#answers button");
   buttons.forEach(btn => btn.disabled = true);
 
-  if (index === q.correct) {
+  if (esCorrecta) {
     score += 10;
     document.getElementById("feedback").innerText =
       "✅ Correcto: " + q.explanation;
@@ -147,7 +104,7 @@ function checkAnswer(index) {
 
   updateUI();
 
-  if (lives === 0) endGame();
+  if (lives === 0) endGame("vidas");
 }
 
 function nextQuestion() {
@@ -158,7 +115,7 @@ function nextQuestion() {
   if (current < questions.length) {
     loadQuestion();
   } else {
-    endGame();
+    endGame("completado");
   }
 }
 
@@ -167,11 +124,46 @@ function updateUI() {
   document.getElementById("lives").innerText = "❤️".repeat(lives);
 }
 
-function endGame() {
+function iniciarTimer() {
+  clearInterval(intervalo);
+  tiempo = 10;
+
+  const timerText = document.getElementById("timer");
+  if (timerText) timerText.innerText = "Tiempo: " + tiempo;
+
+  intervalo = setInterval(() => {
+    tiempo--;
+
+    if (timerText) timerText.innerText = "Tiempo: " + tiempo;
+
+    if (tiempo <= 0) {
+      clearInterval(intervalo);
+      lives--;
+      document.getElementById("feedback").innerText =
+        "⏱️ Se acabó el tiempo";
+
+      updateUI();
+
+      if (lives === 0) {
+        endGame("vidas");
+      } else {
+        nextQuestion();
+      }
+    }
+  }, 1000);
+}
+
+function endGame(motivo) {
   document.getElementById("gameScreen").classList.add("hidden");
   document.getElementById("endScreen").classList.remove("hidden");
-  document.getElementById("finalScore").innerText =
-    "Tu puntaje fue: " + score;
+
+  if (motivo === "vidas") {
+    document.getElementById("finalScore").innerText =
+      "💀 Perdiste, te quedaste sin vidas\nPuntaje: " + score;
+  } else {
+    document.getElementById("finalScore").innerText =
+      "🎉 Terminaste el quiz\nPuntaje: " + score;
+  }
 }
 
 function restartGame() {
