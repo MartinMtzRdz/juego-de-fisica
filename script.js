@@ -28,10 +28,99 @@ const questions = [
     answers: ["Región donde actúa un imán", "Una fuerza", "Un objeto"],
     correct: 0,
     explanation: "Es el área donde se perciben fuerzas magnéticas."
+  },
+  {
+    question: "¿Qué es un electroimán?",
+    answers: ["Un imán natural", "Un imán con corriente eléctrica", "Un metal"],
+    correct: 1,
+    explanation: "Se genera al pasar corriente eléctrica."
+  },
+  {
+    question: "¿Qué mide la velocidad?",
+    answers: ["Distancia/tiempo", "Fuerza", "Masa"],
+    correct: 0,
+    explanation: "La velocidad es distancia sobre tiempo."
+  },
+  {
+    question: "Unidad de fuerza",
+    answers: ["Newton", "Joule", "Watt"],
+    correct: 0,
+    explanation: "La fuerza se mide en Newtons."
+  },
+  {
+    question: "¿Qué mide el voltaje?",
+    answers: ["Corriente", "Diferencia de potencial", "Resistencia"],
+    correct: 1,
+    explanation: "El voltaje es la diferencia de potencial."
+  },
+  {
+    question: "¿Qué mide la corriente eléctrica?",
+    answers: ["Voltios", "Amperios", "Ohms"],
+    correct: 1,
+    explanation: "La corriente se mide en amperios."
+  },
+  {
+    question: "¿Qué representa la resistencia?",
+    answers: ["Paso de corriente", "Oposición al flujo", "Energía"],
+    correct: 1,
+    explanation: "La resistencia se opone al paso de corriente."
+  },
+  {
+    question: "¿Qué pasa si aumenta la resistencia?",
+    answers: ["Disminuye la corriente", "Aumenta la corriente", "Nada"],
+    correct: 0,
+    explanation: "Según la ley de Ohm."
+  },
+  {
+    question: "¿Qué tipo de energía es el calor?",
+    answers: ["Mecánica", "Térmica", "Eléctrica"],
+    correct: 1,
+    explanation: "El calor es energía térmica."
+  },
+  {
+    question: "¿Qué produce un campo magnético?",
+    answers: ["Corriente eléctrica", "Luz", "Sonido"],
+    correct: 0,
+    explanation: "La corriente genera campo magnético."
+  },
+  {
+    question: "¿Qué instrumento mide la corriente?",
+    answers: ["Voltímetro", "Amperímetro", "Termómetro"],
+    correct: 1,
+    explanation: "El amperímetro mide la corriente."
+  },
+  {
+    question: "¿Qué instrumento mide la temperatura?",
+    answers: ["Termómetro", "Voltímetro", "Regla"],
+    correct: 0,
+    explanation: "El termómetro mide la temperatura."
+  },
+  {
+    question: "¿Qué es la energía?",
+    answers: ["Capacidad de realizar trabajo", "Movimiento", "Velocidad"],
+    correct: 0,
+    explanation: "La energía permite realizar trabajo."
+  },
+  {
+    question: "¿Qué es la fuerza?",
+    answers: ["Empuje o jalón", "Velocidad", "Tiempo"],
+    correct: 0,
+    explanation: "La fuerza es un empuje o jalón."
+  },
+  {
+    question: "¿Qué es la masa?",
+    answers: ["Cantidad de materia", "Velocidad", "Fuerza"],
+    correct: 0,
+    explanation: "La masa es la cantidad de materia."
+  },
+  {
+    question: "¿Qué es la aceleración?",
+    answers: ["Cambio de velocidad", "Energía", "Masa"],
+    correct: 0,
+    explanation: "Es el cambio de velocidad en el tiempo."
   }
 ];
 
-// 🔀 Mezclar preguntas (ya no se repiten)
 questions.sort(() => Math.random() - 0.5);
 
 let current = 0;
@@ -39,7 +128,6 @@ let score = 0;
 let lives = 3;
 let level = 1;
 
-// ⏱️ TIMER
 let tiempo = 10;
 let intervalo;
 
@@ -66,7 +154,6 @@ function loadQuestion() {
   const answersDiv = document.getElementById("answers");
   answersDiv.innerHTML = "";
 
-  // 🔀 Mezclar respuestas correctamente
   let opciones = q.answers.map((ans, i) => ({
     texto: ans,
     correcta: i === q.correct
@@ -81,7 +168,7 @@ function loadQuestion() {
     answersDiv.appendChild(btn);
   });
 
-  iniciarTimer(); // ⏱️ iniciar tiempo
+  iniciarTimer(); 
 }
 
 function checkAnswer(esCorrecta) {
